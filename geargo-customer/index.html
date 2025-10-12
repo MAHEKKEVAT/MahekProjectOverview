@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GearGo – Professional README</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --primary: #ff6b00;
+      --secondary: #1e1e1e;
+      --accent-blue: #0ea5e9;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-teal: #14b8a6;
+      --bg: #ffffff;
+      --code-bg: #f6f8fa;
+      --text: #24292e;
+      --light-text: #586069;
+      --link: #0366d6;
+      --radius: 16px;
+      --shadow: 0 2px 8px rgba(0, 0, 0, .08);
+      --shadow-lg: 0 12px 28px rgba(0, 0, 0, .15);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #f0f9ff 0%, #f5f3ff 50%, #fdf2f8 100%);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      min-height: 100vh;
+    }
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: all .3s ease;
+    }
+    a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      object-fit: cover;
+    }
+    h1, h2, h3, h4 {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent-purple), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid;
+      border-image: linear-gradient(90deg, var(--primary), var(--accent-blue), var(--accent-purple)) 1;
+    }
+    h3 {
+      font-size: 1.5rem;
+      background: none;
+      -webkit-text-fill-color: unset;
+      color: var(--secondary);
+    }
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--light-text);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+    code, pre {
+      background: var(--code-bg);
+      border-radius: var(--radius);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 85%;
+    }
+    pre {
+      padding: 2rem;
+      overflow-x: auto;
+      border-left: 5px solid var(--primary);
+      margin: 2rem 0;
+      background: linear-gradient(135deg, #f6f8fa 0%, #f0f9ff 100%);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 50%, var(--accent-purple) 100%);
+      color: white;
+      padding: 4rem 3rem;
+      border-radius: var(--radius);
+      margin-bottom: 4rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      border: none;
+      background: none;
+      -webkit-text-fill-color: white;
+      font-size: 3rem;
+      margin: 0 0 1rem 0;
+    }
+    .hero p {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, .95);
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
+    .logo {
+      height: 64px;
+      vertical-align: middle;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    }
+    .toc {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      margin-bottom: 3rem;
+      border-left: 5px solid var(--accent-blue);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(10px);
+    }
+    .toc h3 {
+      margin-top: 0;
+      color: var(--secondary);
+      background: none;
+      -webkit-text-fill-color: unset;
+    }
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .toc li {
+      margin: 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .toc li:before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .toc a {
+      color: var(--text);
+      font-weight: 600;
+      transition: all .3s ease;
+    }
+    .toc a:hover {
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+    .badge {
+      display: inline-block;
+      padding: .5rem 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+      color: #fff;
+      border-radius: 25px;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-right: .7rem;
+      margin-bottom: .7rem;
+      box-shadow: 0 4px 12px rgba(255, 107, 0, .3);
+      transition: all .3s ease;
+    }
+    .badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(255, 107, 0, .4);
+    }
+    .badge.blue {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+      box-shadow: 0 4px 12px rgba(14, 165, 233, .3);
+    }
+    .badge.purple {
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      box-shadow: 0 4px 12px rgba(139, 92, 246, .3);
+    }
+    .overview-section {
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.05), rgba(139, 92, 246, 0.05));
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+      border-left: 5px solid var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .overview-section p {
+      font-size: 1.05rem;
+      line-height: 2;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(139, 92, 246, 0.05));
+      border-radius: var(--radius);
+    }
+    @media (max-width: 1024px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: all .4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: white;
+    }
+    .gallery img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .screenshot-label {
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      font-size: 0.95rem;
+      transition: all .3s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-item:hover {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+      transform: translateY(-8px);
+    }
+    .gallery-item:hover .screenshot-label {
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+      padding: 1.2rem;
+    }
+    .features-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: white;
+    }
+    .features-table th {
+      padding: 1.2rem;
+      text-align: left;
+      font-weight: 700;
+      color: white;
+      font-size: 1.05rem;
+    }
+    .features-table thead tr:nth-child(1) th {
+      background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+    }
+    .features-table tbody tr {
+      border-bottom: 1px solid #e1e4e8;
+      transition: all .3s ease;
+    }
+    .features-table tbody tr:hover {
+      background: linear-gradient(90deg, rgba(255, 107, 0, 0.05), rgba(139, 92, 246, 0.05));
+      box-shadow: inset 0 0 10px rgba(255, 107, 0, 0.1);
+    }
+    .features-table td {
+      padding: 1.2rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .features-table td:first-child {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .roadmap {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(14, 165, 233, 0.1));
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      border-left: 5px solid var(--accent-purple);
+    }
+    .roadmap ol {
+      padding-left: 2rem;
+    }
+    .roadmap li {
+      margin-bottom: 1.2rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.8;
+    }
+    .roadmap li::marker {
+      color: var(--accent-purple);
+      font-weight: 700;
+    }
+    .team-section {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(14, 165, 233, 0.1));
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      border-left: 5px solid var(--accent-pink);
+    }
+    .team-section h3 {
+      margin-top: 0;
+      color: var(--secondary);
+    }
+    .contact-section {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(139, 92, 246, 0.1));
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      border-left: 5px solid var(--accent-teal);
+    }
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .contact-item {
+      padding: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: all .3s ease;
+    }
+    .contact-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-item strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    hr {
+      border: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent-blue), var(--accent-purple), transparent);
+      margin: 3rem 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent-purple), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .architecture-box {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.1));
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      border: 2px solid var(--accent-blue);
+      margin: 2rem 0;
+    }
+    .bold {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    ul {
+      padding-left: 2rem;
+    }
+    li {
+      margin-bottom: 0.8rem;
+      line-height: 1.8;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      animation: fadeIn .3s ease;
+    }
+    .modal.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      animation: zoomIn .3s ease;
+      position: relative;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.6);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .3s ease;
+      z-index: 10000;
+    }
+    .modal-close:hover {
+      background: rgba(255, 107, 0, 0.9);
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1><img src="assets/logo.png" alt="GearGo" class="logo"> GearGo</h1>
+      <p>🚗 Self-drive car-rental marketplace built with Flutter & Firebase</p>
+      <p>Pick-ups limited to Bardoli, Gujarat — zero drivers, pure freedom.</p>
+    </div>
+
+    <div class="toc">
+      <h3>📚 Quick Navigation</h3>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#firestore">Firestore Collections</a></li>
+        <li><a href="#features">Core Features</a></li>
+        <li><a href="#testing">Testing & CI</a></li>
+        <li><a href="#roadmap">Road-map</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <h2 id="overview">📍 Overview</h2>
+    <div class="overview-section">
+      <p><span class="bold">GearGo</span> is a <span class="bold">community-driven, self-drive</span> car-rental ecosystem that <span class="bold">connects verified car owners</span> with renters in and around <span class="bold">Bardoli</span>. The entire product is engineered in <span class="bold">Flutter (Dart)</span> and utilizes <span class="bold">Firebase</span> for 90% of backend operations while <span class="bold">Appwrite</span> serves as a high-speed CDN for user-uploaded images including damage reports and car photos. With a <span class="bold">minimum rental period of 1 hour</span> and <span class="bold">no drivers provided</span>, our platform promotes <span class="bold">cost-effective, flexible mobility</span> solutions for modern urban transportation needs.</p>
+    </div>
+
+    <h2 id="screenshots">📸 Screenshots (Concept Views)</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="assets/01_splash_update_prompt.jpg" alt="Splash & Update Prompt">
+        <div class="screenshot-label">Splash & Update Prompt</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/02_welcome_back.jpg" alt="Welcome Back">
+        <div class="screenshot-label">Welcome Back Screen</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/03_search_home.jpg" alt="Search Home">
+        <div class="screenshot-label">Search & Home</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/04_my_bookings_list.jpg" alt="My Bookings">
+        <div class="screenshot-label">My Bookings List</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/05_ai_recommendations.jpg" alt="AI Recommendations">
+        <div class="screenshot-label">AI Recommendations</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/06_notification_centre.jpg" alt="Notification Centre">
+        <div class="screenshot-label">Notification Centre</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/07_user_profile.jpg" alt="User Profile">
+        <div class="screenshot-label">User Profile Page</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/08_about_geargo.jpg" alt="About GearGo">
+        <div class="screenshot-label">About GearGo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/09_all_brands_grid.jpg" alt="All Brands">
+        <div class="screenshot-label">All Brands Grid</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/10_search_filter_sheet.jpg" alt="Filter Sheet">
+        <div class="screenshot-label">Search Filter Sheet</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/11_ford_explorer_card.jpg" alt="Car Card">
+        <div class="screenshot-label">Car Card Details</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/12_car_details_gallery.jpg" alt="Car Details">
+        <div class="screenshot-label">Car Details Gallery</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/13_rental_agreement.jpg" alt="Rental Agreement">
+        <div class="screenshot-label">Rental Agreement</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/14_pending_booking_tile.jpg" alt="Pending Booking">
+        <div class="screenshot-label">Pending Booking Tile</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/15_payment_pending.jpg" alt="Payment Pending">
+        <div class="screenshot-label">Payment Pending</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/16_completed_badge.jpg" alt="Completed Badge">
+        <div class="screenshot-label">Completed Badge</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/17_invoice_options.jpg" alt="Invoice Options">
+        <div class="screenshot-label">Invoice Options</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/18_damage_report_form.jpg" alt="Damage Report">
+        <div class="screenshot-label">Damage Report Form</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/19_sample_invoice_pdf.jpg" alt="Sample Invoice">
+        <div class="screenshot-label">Sample Invoice PDF</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/20_add_car_entry.jpg" alt="Add Car Entry">
+        <div class="screenshot-label">Add Car Entry</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/21_admin_whatsapp_alert.jpg" alt="Admin WhatsApp Alert">
+        <div class="screenshot-label">Admin WhatsApp Alert</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/22_car_add_whatsapp.jpg" alt="Car Add WhatsApp">
+        <div class="screenshot-label">Car Add WhatsApp</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/23_login_security_mail.jpg" alt="Login Security Mail">
+        <div class="screenshot-label">Login Security Mail</div>
+      </div>
+    </div>
+
+    <h2 id="features">⚙️ Core & Extended Features</h2>
+    <table class="features-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge">Auth</span></td>
+          <td>2-Factor Authentication, social login, login alerts via WhatsApp & Mail</td>
+        </tr>
+        <tr>
+          <td><span class="badge blue">L10n</span></td>
+          <td>Multi-language support - English, Hindi, Gujarati with hot switch capability</td>
+        </tr>
+        <tr>
+          <td><span class="badge purple">Search</span></td>
+          <td>Real-time multi-field filter with Algolia-style debounce optimization</td>
+        </tr>
+        <tr>
+          <td><span class="badge">Booking</span></td>
+          <td>1 hour minimum rental period, stock-lock mechanism, conflict guard system</td>
+        </tr>
+        <tr>
+          <td><span class="badge blue">Payment</span></td>
+          <td>Razorpay integration - UPI, card, wallet support with auto-reconciliation</td>
+        </tr>
+        <tr>
+          <td><span class="badge purple">GPS</span></td>
+          <td>Live 30-second interval tracking during active rental period</td>
+        </tr>
+        <tr>
+          <td><span class="badge">Damage</span></td>
+          <td>Camera capture to Appwrite CDN; owner & admin notifications triggered</td>
+        </tr>
+        <tr>
+          <td><span class="badge blue">P2P</span></td>
+          <td>Owner KYC verification, car upload workflow, admin approval process</td>
+        </tr>
+        <tr>
+          <td><span class="badge purple">ML</span></td>
+          <td>SVM recommendation engine with match percentage displayed to users</td>
+        </tr>
+        <tr>
+          <td><span class="badge">Invoice</span></td>
+          <td>Auto-generated PDF invoices emailed automatically with tax break-up details</td>
+        </tr>
+        <tr>
+          <td><span class="badge blue">History</span></td>
+          <td>Timeline view with filtering, reordering, damage records, and invoices</td>
+        </tr>
+        <tr>
+          <td><span class="badge purple">Admin</span></td>
+          <td>Flutter-web dashboard for fleet management, revenue analytics, approvals</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="testing">🧪 Testing & CI</h2>
+    <ul>
+      <li><span class="bold">112 Manual Test Cases</span> (Katalon Studio) – comprehensive customer, owner, and admin flow coverage</li>
+      <li><span class="bold">28 Flutter Integration Tests</span> (flutter_driver) – automated UI and integration testing</li>
+      <li><span class="bold">GitHub Actions CI/CD Pipeline</span> – lint → test → build apk → Firebase App Distribution</li>
+    </ul>
+
+    <h2 id="roadmap">🚦 Road-map </h2>
+    <div class="roadmap">
+      <ol>
+        <li>Upgrade to <span class="bold">Flutter 3.24</span> (already prompted in-app)</li>
+        <li>Migrate image bucket to <span class="bold">Firebase Storage</span> (drop Appwrite, single vendor consolidation)</li>
+
+        <li><span class="bold">Dark-mode</span> polish + Gujarati RTL language fixes</li>
+      </ol>
+    </div>
+
+    <h2 id="team">🙋‍♀️ Team MCA</h2>
+    <div class="team-section">
+      <h3>Project Lead</h3>
+      <p><span class="bold">Mahek Kevat</span> (202404104610132) – Scrum Master & Project Lead</p>
+    </div>
+
+    <h2 id="contact">📬 Contact & Support</h2>
+    <div class="contact-section">
+      <div class="contact-info">
+        <div class="contact-item">
+          <strong>📞 Support Hotline</strong>
+          <p>+91 95378 03676</p>
+        </div>
+        <div class="contact-item">
+          <strong>📧 Email Address</strong>
+          <p><a href="mailto:mahekjkevat@gmail.com">mahekjkevat@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <strong>💻 GitHub Repository</strong>
+          <p><a href="https://github.com/GearGo-Team/car_rental_flutter" target="_blank">github.com/GearGo-Team<br>car_rental_flutter</a></p>
+          <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 0.5rem;">(Private – Invite Only)</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class="footer">
+      <p>Built with  – Flutter | Firebase | Appwrite</p>
+      <p style="font-size: 0.9rem; margin-top: 1rem; background: none; -webkit-text-fill-color: unset; color: var(--light-text);">© 2025 GearGo Team. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
